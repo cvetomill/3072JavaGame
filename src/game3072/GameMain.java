@@ -5,7 +5,7 @@ import java.util.Random;
 public class GameMain {
 	
 	public static byte startValue=3; //Spawning value
-	public static byte mapLimits=2;  // size of the field
+	public static byte mapLimits=4;  // size of the field
 	public static short[][] map=new short [mapLimits][mapLimits]; //field value container
 	
 	public static boolean isThereThisValue(int value)
