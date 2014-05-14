@@ -5,8 +5,24 @@ import java.util.Random;
 public class GameMain {
 	
 	public static byte startValue=3; //Spawning value
-	public static byte mapLimits=4;  // size of the field
+	public static byte mapLimits=2;  // size of the field
 	public static short[][] map=new short [mapLimits][mapLimits]; //field value container
+	
+	public static boolean isThereThisValue(int value)
+	{
+		
+		for(int y=0;y<mapLimits;y++)
+		{
+			for(int x=0;x<mapLimits;x++)
+			{
+				if(map[y][x]==value)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	public static boolean isUpMoveable(int y,int x)
 	{
@@ -77,6 +93,7 @@ public class GameMain {
 	{
 		while(!GameIsOver())
 		{
+			GetRandomPosition();
 		}
 	}
 
@@ -85,7 +102,7 @@ public class GameMain {
 		Random coord = new Random();
 		int y=coord.nextInt(mapLimits);
 		int x=coord.nextInt(mapLimits);
-		while(map[y][x]!=0 && map[y][x]!=startValue && !GameIsOver())
+		while(map[y][x]!=0 && map[y][x]!=startValue && (!GameIsOver() || isThereThisValue(startValue)))
 		{
 			y=coord.nextInt(mapLimits);
 			x=coord.nextInt(mapLimits);
@@ -99,7 +116,12 @@ public class GameMain {
 	}
 	
 	public static void main(String[] args) {
-		GamePlay();
+		map[0][0]=1;
+		map[0][1]=2;
+		map[1][0]=3;
+		map[1][1]=4;
+		System.out.println(GameIsOver());
+		
 	}
 	
 	
