@@ -93,7 +93,6 @@ public class GameMain {
 	{
 		while(!GameIsOver())
 		{
-			GetRandomPosition();
 		}
 	}
 
@@ -116,11 +115,6 @@ public class GameMain {
 	}
 	
 	public static void main(String[] args) {
-		map[0][0]=1;
-		map[0][1]=2;
-		map[1][0]=3;
-		map[1][1]=4;
-		System.out.println(GameIsOver());
 		
 	}
 	
