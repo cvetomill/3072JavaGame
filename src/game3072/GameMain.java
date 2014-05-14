@@ -106,11 +106,14 @@ public class GameMain {
 			y=coord.nextInt(mapLimits);
 			x=coord.nextInt(mapLimits);
 		}
-		if(map[y][x]==0)
+		if(!GameIsOver())
 		{
-			map[y][x]=startValue;
-		}else {
-			map[y][x]*=2;
+			if(map[y][x]==0)
+			{
+				map[y][x]=startValue;
+			}else {
+				map[y][x]*=2;
+			}
 		}
 	}
 	
