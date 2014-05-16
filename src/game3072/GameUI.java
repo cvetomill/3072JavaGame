@@ -13,7 +13,7 @@ public class GameUI extends Application {
 
 		GridPane grid = new GridPane();
 		Scene scene = new Scene(grid, 500, 600);
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, GameMain.keyEventHandler);
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -21,6 +21,5 @@ public class GameUI extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 }
