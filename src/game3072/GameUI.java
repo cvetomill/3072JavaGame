@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GameUI extends Application {
@@ -23,15 +24,21 @@ public class GameUI extends Application {
 	}
 
 	private static void fillGrid(GridPane pane, short[][] map) {
+		//create grid rows and columns
+		
+		//place element different than zero
 		short current = 0;
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
 				current = map[row][col];
 				if (current != 0) {
 					pane.add(new Label(String.valueOf(current)), row, col);
+				} else{
+					pane.add(new Text(""), row, col);
 				}
 			}
 		}
+		
 
 	}
 
