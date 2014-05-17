@@ -17,51 +17,18 @@ public class Engine {
 
 		public void handle(KeyEvent keyEvent) {
 			if (keyEvent.getCode() == KeyCode.LEFT) {
-				moveLeft();
+				game3072.Movement.moveLeft(); 	// Left arrow code and movement here
 			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
-				// right arrow code logic here
+				game3072.Movement.moveRight();	// Right arrow code and movement here
 			} else if (keyEvent.getCode() == KeyCode.UP) {
-				// up arrow code logic here
+				game3072.Movement.moveUp();	// Up arrow code and movement here
 			} else if (keyEvent.getCode() == KeyCode.DOWN) {
-				// down arrow code logic here
+				game3072.Movement.moveDown();	// Down arrow code and movement here
 			}
 
 			keyEvent.consume();
 		}
-
 	};
-	
-	
-	private static void moveLeft(){
-	     boolean move=false;
-	     for(int y=0;y<mapLimits;y++){
-	    	 for(int x=1;x<mapLimits;x++){
-		    	 if(map[y][x]!=0)
-		    	 {
-		    		 for(int X=x-1;X>=0;X--){
-				    	 if(map[y][X]==0)
-				    	 {
-				    		 move=true;
-				    		 map[y][X]=map[y][x];
-				    		 map[y][x]=0;
-				    	     x=X;
-				    	 }else if(map[y][X]==map[y][x]){
-				    		 move=true;
-				    		 map[y][X]=(short) (2*map[y][x]);
-				    		 map[y][x]=0;
-				    		 break;
-				    	 }else {
-				    		 break;
-				    	 }
-				     }
-		    	 }
-		     } 
-	     }
-	     if(move==true)
-	     {
-	    	 GetRandomPosition();
-	     }
-	}
 	
 	private static boolean isThereThisValue(int value) {
 
@@ -148,5 +115,4 @@ public class Engine {
 			}
 		}
 	}
-
 }
