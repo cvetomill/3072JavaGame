@@ -9,13 +9,16 @@ using Java and its built-in platfrom JavaFX.
 Team "Illum" members:
 
 Todor Todorov - ttitto
+
 Alexander Genov - Sayshoo
+
 Tsvetomil Yordanov - cvetomill
+
 Stoyan Stoyanov - emzone
+
 Daniel Dimitrov
+
 Ivaylo Ivanov
-
-
 
 
 
