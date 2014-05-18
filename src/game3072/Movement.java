@@ -34,19 +34,19 @@ public class Movement extends game3072.Engine {
 	}
 	
 	public static void moveUp() {
-	     boolean move=false;
-	     for (int x=0;x<mapLimits;x++){
-	    	 for (int y=1; y<mapLimits; y++) { 
+		boolean move=false;
+	     for (int y=1;y<mapLimits;y++){
+	    	 for (int x=0; x<mapLimits;x++){
 		    	 if (map[y][x]!=0)
 		    	 {
-		    		 for (int Y=y+1; Y<mapLimits; Y++) {
+		    		 for (int Y=y-1;Y>=0;Y--){
 				    	 if (map[Y][x]==0)
 				    	 {
 				    		 move=true;
 				    		 map[Y][x]=map[y][x];
 				    		 map[y][x]=0;
-				    	     y=Y;
-				    	 } else if (map[Y][x]==map[y][x]) {
+				    		 y=Y;
+				    	 } else if (map[Y][x]==map[y][x]){
 				    		 move=true;
 				    		 map[Y][x]=(short) (2*map[y][x]);
 				    		 map[y][x]=0;
@@ -96,12 +96,12 @@ public class Movement extends game3072.Engine {
 	}
 	
 	public static void moveDown() {
-	     boolean move=false;
-	     for (int x=0;x<mapLimits;x++){
-	    	 for (int y=mapLimits - 2; y>=0; y--){
+		boolean move=false;
+	     for (int y=mapLimits - 2;y>=0;y--){
+	    	 for (int x=0; x<mapLimits;x++){
 		    	 if (map[y][x]!=0)
 		    	 {
-		    		 for (int Y=y+1;Y>=0;Y--){
+		    		 for (int Y=y+1;Y< mapLimits;Y++){
 				    	 if (map[Y][x]==0)
 				    	 {
 				    		 move=true;
