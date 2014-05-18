@@ -2,6 +2,7 @@ package game3072;
 
 import java.util.Random;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;

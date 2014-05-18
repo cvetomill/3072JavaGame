@@ -1,6 +1,9 @@
 package game3072;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -17,21 +20,46 @@ public class GameUI extends Application {
 	static GridPane grid = new GridPane();
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(final Stage primaryStage) throws Exception {
 
-		GridPane grid = new GridPane();
+		final GridPane grid = new GridPane();
 		primaryStage.setTitle("Game 3072");
-
-		Scene scene = new Scene(grid, 500, 600);
+		
+		final Scene scene = new Scene(grid, 500, 600);
 		scene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
-
-		fillGrid(grid, Engine.map);
-		styleGrid(grid);
-
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		
+		//fillGrid(grid, Engine.map);
+		//styleGrid(grid);
+		
+		Platform.runLater(new Runnable() {
+		    public void run() {	
+		    	if (Engine.keyEventHandler != null)
+		    	{
+					updateGrid(grid, Engine.map);
+					styleGrid(grid);
+		    	}
+				primaryStage.setScene(scene);
+				primaryStage.show();
+		    }
+		});
 	}
+	
+	private static void updateGrid (GridPane pane, short[][] map){
+		pane.getChildren().clear();
+		short current = 0;
+		for (int row = 0; row < map.length;row++){
+			for (int col =0; col < map[row].length;col++){
+				current = map[row][col];
+				if (current != 0) {
+					pane.add(new Label(String.valueOf(current)), row, col);
 
+				} else {
+					pane.add(new Label(""), row, col);
+				}
+			}
+		};
+	}
+		
 	private static void fillGrid(GridPane pane, short[][] map) {
 		// create grid rows and columns
 
@@ -45,13 +73,12 @@ public class GameUI extends Application {
 
 				} else {
 					pane.add(new Label(""), row, col);
-					
-
 				}
 			}
 		}
 
 	}
+	
 
 	public static void styleGrid(GridPane pane) {
 
@@ -80,14 +107,19 @@ public class GameUI extends Application {
 		}
 
 	}
+	
 
 	public static void main(String[] args) {
 
 		Engine.GetRandomPosition();
 		fillGrid(grid, Engine.map);
 		// style grid
+		
 		launch(args);
 		// ...
+		
 
+
+		
 	}
 }
