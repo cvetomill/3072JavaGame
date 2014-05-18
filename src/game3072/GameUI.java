@@ -2,6 +2,7 @@ package game3072;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -29,19 +30,9 @@ public class GameUI extends Application {
 		final Scene scene = new Scene(grid, 500, 600);
 		scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEventHandler);
 		
-		//fillGrid(grid, Engine.map);
-		//styleGrid(grid);
+		fillGrid(grid, Engine.map);
+		styleGrid(grid);
 		
-		Platform.runLater(new Runnable() {
-		    public void run() {	
-		    	if (keyEventHandler != null)
-		    	{
-					updateGrid(grid, Engine.map);
-					styleGrid(grid);
-					//System.out.println("void run()");
-		    	}
-		    }
-		});	
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -61,7 +52,25 @@ public class GameUI extends Application {
 				game3072.Movement.moveDown();
 				//System.out.println("down");// Down arrow code and movement here
 			}
-
+			
+			Task task = new Task<Void>() {
+				  @Override
+				  public Void call() throws Exception {
+				      Platform.runLater(new Runnable() {
+				        @Override
+				        public void run() {
+							updateGrid(grid, Engine.map);
+							styleGrid(grid);
+				        }
+				      });
+				      Thread.sleep(10);
+				      return null;
+				  }
+				};
+				Thread th = new Thread(task);
+				th.setDaemon(true);
+				th.start();
+			
 			keyEvent.consume();
 		}
 	};
@@ -133,11 +142,8 @@ public class GameUI extends Application {
 	
 
 	public static void main(String[] args) {
-
 		Engine.GetRandomPosition();
-
+		fillGrid(grid, Engine.map);
 		launch(args);
-		
-		
 	}
 }
