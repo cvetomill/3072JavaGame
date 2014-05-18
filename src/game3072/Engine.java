@@ -8,11 +8,14 @@ import javafx.scene.input.KeyCode;
 
 public class Engine {
 
+	public static int scoreCounter=0;
 	public static byte startValue = 3; // Spawning value
 	public static byte mapLimits = 4; // size of the field
 	public static short[][] map = new short[mapLimits][mapLimits]; // field
 																	// value
 																	// container
+	
+	
 	public static EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
 		public void handle(KeyEvent keyEvent) {
