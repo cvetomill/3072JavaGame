@@ -2,7 +2,6 @@ package game3072;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -10,15 +9,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-public class GameUI extends Application {
-	static GridPane grid = new GridPane();
 
+public class GameUI extends Application {
+	static GridPane grid = new GridPane();	
+	
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 
@@ -26,24 +27,44 @@ public class GameUI extends Application {
 		primaryStage.setTitle("Game 3072");
 		
 		final Scene scene = new Scene(grid, 500, 600);
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEventHandler);
 		
 		//fillGrid(grid, Engine.map);
 		//styleGrid(grid);
 		
-		
 		Platform.runLater(new Runnable() {
 		    public void run() {	
-		    	if (Engine.keyEventHandler != null)
+		    	if (keyEventHandler != null)
 		    	{
 					updateGrid(grid, Engine.map);
 					styleGrid(grid);
+					//System.out.println("void run()");
 		    	}
-				primaryStage.setScene(scene);
-				primaryStage.show();
 		    }
-		});
+		});	
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
+	
+	public static EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
+		public void handle(KeyEvent keyEvent) {
+			if (keyEvent.getCode() == KeyCode.LEFT) {
+				game3072.Movement.moveLeft();
+				//System.out.println("Left"); 	// Left arrow code and movement here
+			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
+				game3072.Movement.moveRight();
+				//System.out.println("right");// Right arrow code and movement here
+			} else if (keyEvent.getCode() == KeyCode.UP) {
+				game3072.Movement.moveUp();
+				//System.out.println("up");// Up arrow code and movement here		
+			} else if (keyEvent.getCode() == KeyCode.DOWN) {
+				game3072.Movement.moveDown();
+				//System.out.println("down");// Down arrow code and movement here
+			}
+
+			keyEvent.consume();
+		}
+	};
 	
 	private static void updateGrid (GridPane pane, short[][] map){
 		pane.getChildren().clear();
@@ -59,6 +80,9 @@ public class GameUI extends Application {
 				}
 			}
 		};
+		pane.requestLayout();
+		System.out.println("layout request from updateGrid");
+		System.out.println("Pane prop" + pane.hasProperties());
 	}
 		
 	private static void fillGrid(GridPane pane, short[][] map) {
@@ -109,18 +133,20 @@ public class GameUI extends Application {
 
 	}
 	
+	
+	//************************************************************
+
+
+	//************************************************************
+
+	
 
 	public static void main(String[] args) {
 
 		Engine.GetRandomPosition();
-		fillGrid(grid, Engine.map);
-		// style grid
-		
+
 		launch(args);
-		// ...
 		
-
-
 		
 	}
 }

@@ -2,10 +2,6 @@ package game3072;
 
 import java.util.Random;
 
-import javafx.application.Platform;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.KeyCode;
 
 public class Engine {
 
@@ -14,22 +10,7 @@ public class Engine {
 	public static short[][] map = new short[mapLimits][mapLimits]; // field
 																	// value
 																	// container
-	public static EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
-		public void handle(KeyEvent keyEvent) {
-			if (keyEvent.getCode() == KeyCode.LEFT) {
-				game3072.Movement.moveLeft(); 	// Left arrow code and movement here
-			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
-				game3072.Movement.moveRight();	// Right arrow code and movement here
-			} else if (keyEvent.getCode() == KeyCode.UP) {
-				game3072.Movement.moveUp();	// Up arrow code and movement here
-			} else if (keyEvent.getCode() == KeyCode.DOWN) {
-				game3072.Movement.moveDown();	// Down arrow code and movement here
-			}
-
-			keyEvent.consume();
-		}
-	};
 	
 	private static boolean isThereThisValue(int value) {
 
