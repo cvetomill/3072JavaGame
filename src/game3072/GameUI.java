@@ -11,6 +11,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class GameUI extends Application {
@@ -57,7 +59,13 @@ public static void	updateStage(){
 			for (int col = 0; col < map[row].length; col++) {
  				current = map[row][col];
 				if (current != 0) {
-					pane.add(new Label(String.valueOf(current)), row, col);
+					//style Label
+					String val=String.valueOf(current);
+					Label lbl=new Label(val);
+					lbl.setFont(new Font(35));
+					lbl.setTextFill(Color.RED);
+					
+					pane.add(lbl, row, col);
 
 				} else {
 					pane.add(new Label(""), row, col);
