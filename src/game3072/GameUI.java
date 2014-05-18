@@ -1,9 +1,6 @@
 package game3072;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -20,16 +17,16 @@ public class GameUI extends Application {
 	static GridPane grid = new GridPane();
 	static Stage globalStage;
 	static Scene globalScene;
+	
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 		globalStage=primaryStage;
 		final GridPane grid = new GridPane();
-		primaryStage.setTitle("Game 3072");
+		globalStage.setTitle("Game 3072");
 		
-		final Scene scene = new Scene(grid, 500, 600);
-		globalScene=scene;
+		 globalScene = new Scene(grid, 500, 600);
 		globalScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
+		
 		fillGrid(grid, Engine.map);
 		styleGrid(grid);
 		
@@ -38,23 +35,22 @@ public class GameUI extends Application {
 	}
 	
 public static void	updateStage(){
+		grid=new GridPane();
 		updateGrid(grid, Engine.map);
 		styleGrid(grid);
-		Scene myScene=new Scene(grid,500,600);
-		myScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
-		globalStage.setScene(myScene);
+		
+		globalScene=new Scene(grid,500,600);
+		globalScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
+		globalStage.setScene(globalScene);
 		globalStage.show();
 	}
 	
 	private static void updateGrid (GridPane pane, short[][] map){
 		pane.getChildren().clear();
 		fillGrid(pane,map);
-		
 	}
 		
 	private static void fillGrid(GridPane pane, short[][] map) {
-		// create grid rows and columns
-
 		// place element different than zero
 		short current = 0;
 		for (int row = 0; row < map.length; row++) {
@@ -71,10 +67,9 @@ public static void	updateStage(){
 
 	}
 	
-
 	public static void styleGrid(GridPane pane) {
 
-		pane.setStyle("-fx-background-color: teal;-fx-hgap: 5; -fx-vgap: 5; -fx-alignment: center;");
+		pane.setStyle("-fx-background-color: teal; -fx-hgap: 5; -fx-vgap: 5;-fx-alignment: center;");
 		pane.setGridLinesVisible(true);
 		pane.setSnapToPixel(true);
 		pane.getChildren();
@@ -95,23 +90,13 @@ public static void	updateStage(){
 				control.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 				control.setStyle("-fx-background-color: cornsilk; -fx-alignment: center;");
 			}
-
 		}
-
 	}
 	
-
 	public static void main(String[] args) {
-
 		Engine.GetRandomPosition();
 		fillGrid(grid, Engine.map);
-		// style grid
 		
-		launch(args);
-		// ...
-		
-
-
-		
+		launch(args);		
 	}
 }
