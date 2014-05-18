@@ -2,7 +2,7 @@ package game3072;
 
 public class Movement extends game3072.Engine {
 
-	public static void moveLeft() {
+	public static void moveUp() {
 	     boolean move=false;
 	     for (int y=0;y<mapLimits;y++) {
 	    	 for (int x=1;x<mapLimits;x++) {
@@ -33,7 +33,7 @@ public class Movement extends game3072.Engine {
 	     }
 	}
 	
-	public static void moveUp() {
+	public static void moveLeft() {
 		boolean move=false;
 	     for (int y=1;y<mapLimits;y++){
 	    	 for (int x=0; x<mapLimits;x++){
@@ -64,7 +64,7 @@ public class Movement extends game3072.Engine {
 	     }
 	}	
 	
-	public static void moveRight(){
+	public static void moveDown(){
 	     boolean move=false;
 	     for (int y=0;y<mapLimits;y++){
 	    	 for (int x=mapLimits - 2; x>=0;x--){
@@ -95,7 +95,7 @@ public class Movement extends game3072.Engine {
 	     }
 	}
 	
-	public static void moveDown() {
+	public static void moveRight() {
 		boolean move=false;
 	     for (int y=mapLimits - 2;y>=0;y--){
 	    	 for (int x=0; x<mapLimits;x++){
