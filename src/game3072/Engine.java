@@ -10,7 +10,6 @@ public class Engine {
 	public static short[][] map = new short[mapLimits][mapLimits]; // field
 																	// value
 																	// container
-
 	
 	private static boolean isThereThisValue(int value) {
 

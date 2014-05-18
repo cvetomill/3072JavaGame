@@ -17,7 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
-
 public class GameUI extends Application {
 	static GridPane grid = new GridPane();	
 	
