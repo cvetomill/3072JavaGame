@@ -79,10 +79,8 @@ public class GameUI extends Application {
 					pane.add(new Label(""), row, col);
 				}
 			}
-		};
-		pane.requestLayout();
-		System.out.println("layout request from updateGrid");
-		System.out.println("Pane prop" + pane.hasProperties());
+		}
+		System.out.println("updateGrid");
 	}
 		
 	private static void fillGrid(GridPane pane, short[][] map) {
@@ -132,13 +130,6 @@ public class GameUI extends Application {
 		}
 
 	}
-	
-	
-	//************************************************************
-
-
-	//************************************************************
-
 	
 
 	public static void main(String[] args) {
