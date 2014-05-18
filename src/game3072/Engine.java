@@ -20,17 +20,17 @@ public class Engine {
 
 		public void handle(KeyEvent keyEvent) {
 			if (keyEvent.getCode() == KeyCode.LEFT) {
-				game3072.Movement.moveUp();
+				game3072.Movement.moveLeft(); 
 					// Left arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
-				game3072.Movement.moveDown();	// Right arrow code and movement here
+					game3072.Movement.moveRight();// Right arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.UP) {
-				game3072.Movement.moveLeft(); 	// Up arrow code and movement here
+				game3072.Movement.moveUp();// Up arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.DOWN) {
-				game3072.Movement.moveRight();	
+				game3072.Movement.moveDown();
 				// Down arrow code and movement here
 				GameUI.updateStage();
 			}
