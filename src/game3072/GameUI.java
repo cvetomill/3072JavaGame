@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -18,77 +17,39 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 public class GameUI extends Application {
-	static GridPane grid = new GridPane();	
-	
+	static GridPane grid = new GridPane();
+	static Stage globalStage;
+	static Scene globalScene;
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
-
+		globalStage=primaryStage;
 		final GridPane grid = new GridPane();
 		primaryStage.setTitle("Game 3072");
 		
 		final Scene scene = new Scene(grid, 500, 600);
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEventHandler);
-		
+		globalScene=scene;
+		globalScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
 		fillGrid(grid, Engine.map);
 		styleGrid(grid);
 		
-		primaryStage.setScene(scene);
+		primaryStage.setScene(globalScene);
 		primaryStage.show();
 	}
 	
-	public static EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
-		public void handle(KeyEvent keyEvent) {
-			if (keyEvent.getCode() == KeyCode.LEFT) {
-				game3072.Movement.moveLeft();
-				//System.out.println("Left"); 	// Left arrow code and movement here
-			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
-				game3072.Movement.moveRight();
-				//System.out.println("right");// Right arrow code and movement here
-			} else if (keyEvent.getCode() == KeyCode.UP) {
-				game3072.Movement.moveUp();
-				//System.out.println("up");// Up arrow code and movement here		
-			} else if (keyEvent.getCode() == KeyCode.DOWN) {
-				game3072.Movement.moveDown();
-				//System.out.println("down");// Down arrow code and movement here
-			}
-			
-			Task task = new Task<Void>() {
-				  @Override
-				  public Void call() throws Exception {
-				      Platform.runLater(new Runnable() {
-				        @Override
-				        public void run() {
-							updateGrid(grid, Engine.map);
-							styleGrid(grid);
-				        }
-				      });
-				      Thread.sleep(10);
-				      return null;
-				  }
-				};
-				Thread th = new Thread(task);
-				th.setDaemon(true);
-				th.start();
-			
-			keyEvent.consume();
-		}
-	};
+public static void	updateStage(){
+		updateGrid(grid, Engine.map);
+		styleGrid(grid);
+		Scene myScene=new Scene(grid,500,600);
+		myScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
+		globalStage.setScene(myScene);
+		globalStage.show();
+	}
 	
 	private static void updateGrid (GridPane pane, short[][] map){
 		pane.getChildren().clear();
-		short current = 0;
-		for (int row = 0; row < map.length;row++){
-			for (int col =0; col < map[row].length;col++){
-				current = map[row][col];
-				if (current != 0) {
-					pane.add(new Label(String.valueOf(current)), row, col);
-
-				} else {
-					pane.add(new Label(""), row, col);
-				}
-			}
-		}
-		System.out.println("updateGrid");
+		fillGrid(pane,map);
+		
 	}
 		
 	private static void fillGrid(GridPane pane, short[][] map) {
@@ -98,7 +59,7 @@ public class GameUI extends Application {
 		short current = 0;
 		for (int row = 0; row < map.length; row++) {
 			for (int col = 0; col < map[row].length; col++) {
-				current = map[row][col];
+ 				current = map[row][col];
 				if (current != 0) {
 					pane.add(new Label(String.valueOf(current)), row, col);
 
@@ -141,8 +102,16 @@ public class GameUI extends Application {
 	
 
 	public static void main(String[] args) {
+
 		Engine.GetRandomPosition();
 		fillGrid(grid, Engine.map);
+		// style grid
+		
 		launch(args);
+		// ...
+		
+
+
+		
 	}
 }
