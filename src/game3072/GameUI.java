@@ -31,6 +31,7 @@ public class GameUI extends Application {
 		//fillGrid(grid, Engine.map);
 		//styleGrid(grid);
 		
+		
 		Platform.runLater(new Runnable() {
 		    public void run() {	
 		    	if (Engine.keyEventHandler != null)
