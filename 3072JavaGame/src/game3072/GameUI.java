@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class GameUI extends Application {
@@ -102,7 +103,7 @@ public static void	updateStage(){
 		        
 		        Glass.add(Score, 0, 3, 4, 1);
 				styleGrid(Glass);
-				Glass.setGridLinesVisible(true);
+				Glass.setGridLinesVisible(false);
 				
 				
 				
@@ -131,13 +132,20 @@ public static void	updateStage(){
 				}
 			}
 		}
+		
+		Label res=new Label("SCORE: "+Engine.scoreCounter);
+		res.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+		res.setTextFill(Color.RED);
+		
+		pane.addColumn(0, res);
+		GridPane.setConstraints(res,0,4,4,1);
 
 	}
 	
 	public static void styleGrid(GridPane pane) {
 
 		pane.setStyle("-fx-background-color: teal; -fx-hgap: 5; -fx-vgap: 5;-fx-alignment: center;");
-		pane.setGridLinesVisible(true);
+		pane.setGridLinesVisible(false);
 		pane.setSnapToPixel(true);
 		pane.getChildren();
 
