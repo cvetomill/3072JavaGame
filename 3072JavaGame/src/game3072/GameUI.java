@@ -84,7 +84,10 @@ public static void	updateStage(){
 		        NewGame.setOnAction(new EventHandler<ActionEvent>() {
 
 		            public void handle(ActionEvent event) {
+		            	Engine.map =  new short[Engine.mapLimits][Engine.mapLimits];
 		            	Engine.GetRandomPosition();
+		            	fillGrid(grid, Engine.map);
+		            	Engine.scoreCounter = 0;
 		                globalStage.setScene(globalScene);
 		            }
 		        });
@@ -92,16 +95,16 @@ public static void	updateStage(){
 		        Glass.add(NewGame, 0, 2, 4, 1);
 		      //************************************************
 		        
-		        Label Score = new Label("Score");
-		        Score.setFont(new Font("Arial", 20));
+		        Label Score = new Label("Your Score is " + Engine.scoreCounter);
+		        Score.setFont(new Font("Arial", 15));
 		        Score.setLayoutX(220);
 		        Score.setLayoutY(80);
 		        
+		        Glass.add(Score, 0, 3, 4, 1);
 				styleGrid(Glass);
-				Glass.setGridLinesVisible(false);
+				Glass.setGridLinesVisible(true);
 				
-				styleGrid(Glass);
-				Glass.setGridLinesVisible(false);
+				
 				
 				globalStage.setScene(scene3);
 				globalStage.show();
@@ -121,10 +124,6 @@ public static void	updateStage(){
 					Label lbl=new Label(val);
 					lbl.setFont(new Font(35));
 					lbl.setTextFill(Color.RED);
-<<<<<<< HEAD:3072JavaGame/src/game3072/GameUI.java
-=======
-					
->>>>>>> 854cd928b102e94c3b260e083a9f44a0ee41315e:src/game3072/GameUI.java
 					pane.add(lbl, row, col);
 
 				} else {

@@ -7,11 +7,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 
 public class Engine {
-<<<<<<< HEAD:3072JavaGame/src/game3072/Engine.java
-	
-=======
-
->>>>>>> 854cd928b102e94c3b260e083a9f44a0ee41315e:src/game3072/Engine.java
 	public static int scoreCounter=0;
 	public static byte startValue = 3; // Spawning value
 	public static byte mapLimits = 4; // size of the field
@@ -41,6 +36,8 @@ public class Engine {
 			
 			if (GameIsOver())
 			{
+				
+				
 				GameUI.GameOverStage();
 				System.out.println("Game is over event handler");
 			}
