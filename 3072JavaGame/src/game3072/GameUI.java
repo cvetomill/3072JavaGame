@@ -126,7 +126,46 @@ public static void	updateStage(){
 					String val=String.valueOf(current);
 					Label lbl=new Label(val);
 					lbl.setFont(new Font(35));
-					lbl.setTextFill(Color.RED);
+					
+					switch (current) {
+					case 3:
+						lbl.setTextFill(Color.web( "#FFC826"));
+						break;
+					case 6:
+						lbl.setTextFill(Color.ORANGE);
+						break;
+					case 12:
+						lbl.setTextFill(Color.web("#FF6D44"));
+						break;
+					case 24:
+						lbl.setTextFill(Color.web("#FF77B0"));
+						break;
+					case 48:
+						lbl.setTextFill(Color.web("#F356FF"));
+						break;
+					case 96:
+						lbl.setTextFill(Color.web("#C563FF"));
+						break;
+					case 192:
+						lbl.setTextFill(Color.web("#9A75FF"));
+						break;
+					case 384:
+						lbl.setTextFill(Color.web("#2327FF"));
+						break;
+					case 768:
+						lbl.setTextFill(Color.web("#3FB2FF"));
+						break;
+					case 1536:
+						lbl.setTextFill(Color.web("#3DFBFF"));
+						break;
+					case 3072:
+						lbl.setTextFill(Color.web("#32FF62"));
+						break;
+					default:
+						lbl.setTextFill(Color.web( "#000000"));
+						break;
+					}
+					
 					pane.add(lbl, row, col);
 
 				} else {
