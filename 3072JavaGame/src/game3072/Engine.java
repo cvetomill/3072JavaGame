@@ -2,33 +2,40 @@ package game3072;
 
 import java.util.Random;
 
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 
 public class Engine {
+<<<<<<< HEAD:3072JavaGame/src/game3072/Engine.java
 	
+=======
+
+>>>>>>> 854cd928b102e94c3b260e083a9f44a0ee41315e:src/game3072/Engine.java
 	public static int scoreCounter=0;
 	public static byte startValue = 3; // Spawning value
 	public static byte mapLimits = 4; // size of the field
 	public static short[][] map = new short[mapLimits][mapLimits]; // field
 																	// value
 																	// container
+	
+	
 	public static EventHandler<KeyEvent> keyEventHandler = new EventHandler<KeyEvent>() {
 
 		public void handle(KeyEvent keyEvent) {
 			if (keyEvent.getCode() == KeyCode.LEFT) {
-				game3072.Movement.moveLeft(); 	// Left arrow code and movement here
+				game3072.Movement.moveLeft(); 
+					// Left arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.RIGHT) {
-				game3072.Movement.moveRight();	// Right arrow code and movement here
+					game3072.Movement.moveRight();// Right arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.UP) {
-				game3072.Movement.moveUp();	// Up arrow code and movement here
+				game3072.Movement.moveUp();// Up arrow code and movement here
 				GameUI.updateStage();
 			} else if (keyEvent.getCode() == KeyCode.DOWN) {
-				game3072.Movement.moveDown();	// Down arrow code and movement here
+				game3072.Movement.moveDown();
+				// Down arrow code and movement here
 				GameUI.updateStage();
 			}
 			

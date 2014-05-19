@@ -121,6 +121,10 @@ public static void	updateStage(){
 					Label lbl=new Label(val);
 					lbl.setFont(new Font(35));
 					lbl.setTextFill(Color.RED);
+<<<<<<< HEAD:3072JavaGame/src/game3072/GameUI.java
+=======
+					
+>>>>>>> 854cd928b102e94c3b260e083a9f44a0ee41315e:src/game3072/GameUI.java
 					pane.add(lbl, row, col);
 
 				} else {
