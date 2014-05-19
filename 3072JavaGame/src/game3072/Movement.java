@@ -16,6 +16,7 @@ public class Movement extends game3072.Engine {
 				    		 map[y][x]=0;
 				    	     x=X;
 				    	 } else if (map[y][X]==map[y][x]) {
+				    		 Engine.scoreCounter+=map[y][x]*2;
 				    		 move=true;
 				    		 map[y][X]=(short) (2*map[y][x]);
 				    		 map[y][x]=0;
@@ -47,6 +48,7 @@ public class Movement extends game3072.Engine {
 				    		 map[y][x]=0;
 				    		 y=Y;
 				    	 } else if (map[Y][x]==map[y][x]){
+				    		 Engine.scoreCounter+=map[y][x]*2;
 				    		 move=true;
 				    		 map[Y][x]=(short) (2*map[y][x]);
 				    		 map[y][x]=0;
@@ -78,6 +80,7 @@ public class Movement extends game3072.Engine {
 				    		 map[y][x]=0;
 				    	     x=X;
 				    	 } else if (map[y][X]==map[y][x]){
+				    		 Engine.scoreCounter+=map[y][x]*2;
 				    		 move=true;
 				    		 map[y][X]=(short) (2*map[y][x]);
 				    		 map[y][x]=0;
@@ -109,6 +112,7 @@ public class Movement extends game3072.Engine {
 				    		 map[y][x]=0;
 				    	     y=Y;
 				    	 } else if (map[Y][x]==map[y][x]){
+				    		 Engine.scoreCounter+=map[y][x]*2;
 				    		 move=true;
 				    		 map[Y][x]=(short) (2*map[y][x]);
 				    		 map[y][x]=0;

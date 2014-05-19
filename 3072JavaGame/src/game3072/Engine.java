@@ -8,7 +8,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 
 public class Engine {
-
+	
+	public static int scoreCounter=0;
 	public static byte startValue = 3; // Spawning value
 	public static byte mapLimits = 4; // size of the field
 	public static short[][] map = new short[mapLimits][mapLimits]; // field
@@ -30,7 +31,13 @@ public class Engine {
 				game3072.Movement.moveDown();	// Down arrow code and movement here
 				GameUI.updateStage();
 			}
-
+			
+			if (GameIsOver())
+			{
+				GameUI.GameOverStage();
+				System.out.println("Game is over event handler");
+			}
+			
 			keyEvent.consume();
 		}
 	};
@@ -95,6 +102,8 @@ public class Engine {
 					return false;
 			}
 		}
+		
+		
 		return true;
 	}
 

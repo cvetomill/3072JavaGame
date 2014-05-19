@@ -16,7 +16,7 @@ Tsvetomil Yordanov - cvetomill
 
 Stoyan Stoyanov - emzone
 
-Daniel Dimitrov - Kaldirion
+Daniel Dimitrov
 
 Ivaylo Ivanov
 
