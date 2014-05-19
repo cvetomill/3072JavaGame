@@ -52,7 +52,9 @@ public static void	updateStage(){
 		updateGrid(grid, Engine.map);
 		styleGrid(grid);
 		
-		globalScene=new Scene(grid,500,600);
+		double scWidth=globalScene.getWidth();
+		double scHeight=globalScene.getHeight();
+		globalScene=new Scene(grid,scWidth,scHeight);
 		globalScene.addEventHandler(KeyEvent.KEY_PRESSED, Engine.keyEventHandler);
 		globalStage.setScene(globalScene);
 		globalStage.show();
