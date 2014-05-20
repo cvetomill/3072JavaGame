@@ -127,12 +127,13 @@ public static void	updateStage(){
 					Label lbl=new Label(val);
 					lbl.setFont(new Font(35));
 					
+					// Using different colors for the different numbers
 					switch (current) {
 					case 3:
 						lbl.setTextFill(Color.web( "#FFC826"));
 						break;
 					case 6:
-						lbl.setTextFill(Color.ORANGE);
+						lbl.setTextFill(Color.web("#D0FA58"));
 						break;
 					case 12:
 						lbl.setTextFill(Color.web("#FF6D44"));
@@ -185,7 +186,7 @@ public static void	updateStage(){
 	
 	public static void styleGrid(GridPane pane) {
 
-		pane.setStyle("-fx-background-color: teal; -fx-hgap: 5; -fx-vgap: 5;-fx-alignment: center;");
+		pane.setStyle("-fx-background-color: white; -fx-hgap: 5; -fx-vgap: 5;-fx-alignment: center;");
 		pane.setGridLinesVisible(false);
 		pane.setSnapToPixel(true);
 		pane.getChildren();
@@ -204,7 +205,7 @@ public static void	updateStage(){
 			if (node instanceof Control) {
 				Control control = (Control) node;
 				control.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-				control.setStyle("-fx-background-color: cornsilk; -fx-alignment: center;");
+				control.setStyle("-fx-background-color: black; -fx-alignment: center;");
 			}
 		}
 	}
