@@ -28,7 +28,7 @@ public class GameUI extends Application {
 	public void start(final Stage primaryStage) throws Exception {
         
         Label Score = new Label("Score");
-        Score.setFont(new Font("Arial", 20));
+        Score.setFont(new Font("Verdana", 20));
         Score.setLayoutX(220);
         Score.setLayoutY(80);
         
@@ -175,13 +175,12 @@ public static void	updateStage(){
 			}
 		}
 		
+		// Implementation of a score box 
 		Label res=new Label("SCORE: "+Engine.scoreCounter);
-		res.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+		res.setFont(Font.font("Arial", FontWeight.BOLD, 22));
 		res.setTextFill(Color.RED);
-		
 		pane.addColumn(0, res);
 		GridPane.setConstraints(res,0,4,4,1);
-
 	}
 	
 	public static void styleGrid(GridPane pane) {
