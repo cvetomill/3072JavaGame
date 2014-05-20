@@ -109,11 +109,6 @@ public class Engine {
 		return true; // if it returns true, the game is over
 	}
 
-	public static void Run() {
-		while (!GameIsOver()) {
-		}
-	}
-
 	// A method which generates values in the still unused cells
 	public static void GetRandomPosition() {
 		Random coord = new Random();
