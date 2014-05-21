@@ -41,11 +41,11 @@ public class Engine {
 		}
 	};
 	
-	// isThereThisValue - used for determining whether a particular cell is already used
+	// isThereThisValue - used for determining there is still cell which value equals to 3. 
 	private static boolean isThereThisValue(int value) {
 		for (int y = 0; y < mapLimits; y++) {
 			for (int x = 0; x < mapLimits; x++) {
-				if (map[y][x] == value) {
+				if (map[y][x] == value) { // If it finds it, it returns true.
 					return true;
 				}
 			}
@@ -114,14 +114,14 @@ public class Engine {
 		Random coord = new Random();
 		int y = coord.nextInt(mapLimits);
 		int x = coord.nextInt(mapLimits);
-		while (map[y][x] != 0 && map[y][x] != startValue
-				&& (!GameIsOver() || isThereThisValue(startValue))) {
+		while (map[y][x] != 0 && map[y][x] != startValue // While the cell isn't empty, the cell's value isn't equal to 3
+				&& (!GameIsOver() || isThereThisValue(startValue))) { //, the game is still not over or there is still 3 on the whole table, then continue
 			y = coord.nextInt(mapLimits);
 			x = coord.nextInt(mapLimits);
 		}
 		if (!GameIsOver()) {
-			if (map[y][x] == 0) {
-				map[y][x] = startValue;
+			if (map[y][x] == 0) { // If the game isn't over, and there cell is empty (equal to 0), 
+				map[y][x] = startValue;  // then assign value 3 to it.
 			} else {
 				map[y][x] *= 2;
 			}
